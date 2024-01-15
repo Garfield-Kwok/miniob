@@ -40,7 +40,11 @@ class Value
 {
 public:
   Value() = default;
-
+  // 这种语法的一个主要用途是在你为类定义了其他构造函数，
+  // 但仍然想要一个默认构造函数的情况下。
+  // 在这种情况下，如果你不写 Value() = default;，
+  // 编译器就不会为你生成默认的构造函数。
+  
   Value(AttrType attr_type, char *data, int length = 4) : attr_type_(attr_type) { this->set_data(data, length); }
 
   explicit Value(int val);

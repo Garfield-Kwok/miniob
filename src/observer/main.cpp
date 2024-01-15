@@ -45,7 +45,7 @@ void usage()
   cout << "-n: buffer pool memory size in byte" << endl;
 }
 
-void parse_parameter(int argc, char **argv)
+void parse_parameter(int argc, char **argv)// 解析参数
 {
   string process_name = get_process_name(argv[0]);
 

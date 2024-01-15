@@ -4,6 +4,62 @@
 
 </div>
 
+<!-- miniob的关键数据结构
+部分关键数据结构：
+
+parse_def.h:
+    struct Selects;//查询相关
+    struct CreateTable;//建表相关
+    struct DropTable;//删表相关
+    enum SqlCommandFlag;//sql语句对应的command枚举
+    union Queries;//各类dml和ddl操作的联合
+table.h
+    class Table;
+db.h
+    class Db;
+miniob的关键接口
+部分关键接口
+
+RC parse(const char *st, Query *sqln);//sql parse入口
+ExecuteStage::handle_request
+ExecuteStage::do_select
+DefaultStorageStage::handle_event
+DefaultHandler::create_index
+DefaultHandler::insert_record
+DefaultHandler::delete_record
+DefaultHandler::update_record
+Db::create_table
+Db::find_table
+Table::create
+Table::scan_record
+Table::insert_record
+Table::update_record
+Table::delete_record
+Table::scan_record
+Table::create_index
+打印日志调试
+miniob提供的日志接口
+
+deps/common/log/log.h:
+#define LOG_PANIC(fmt, ...)
+#define LOG_ERROR(fmt, ...)
+#define LOG_WARN(fmt, ...)
+#define LOG_INFO(fmt, ...)
+#define LOG_DEBUG(fmt, ...)
+#define LOG_TRACE(fmt, ...)
+日志相关配置项observer.ini
+
+LOG_FILE_NAME = observer.log
+#  LOG_LEVEL_PANIC = 0,
+#  LOG_LEVEL_ERR = 1,
+#  LOG_LEVEL_WARN = 2,
+#  LOG_LEVEL_INFO = 3,
+#  LOG_LEVEL_DEBUG = 4,
+#  LOG_LEVEL_TRACE = 5,
+#  LOG_LEVEL_LAST
+LOG_FILE_LEVEL=5
+LOG_CONSOLE_LEVEL=1 -->
+
 # MiniOB 概述
 
 MiniOB 是 [OceanBase](https://github.com/oceanbase/oceanbase) 团队基于华中科技大学数据库课程原型，联合多所高校重新开发的、专为零基础的同学设计的数据库入门学习项目。我们的目标是为在校学生、数据库从业者、爱好者或对基础技术感兴趣的人提供一个友好的数据库学习项目。
